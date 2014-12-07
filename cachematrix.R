@@ -8,7 +8,7 @@
 makeCacheMatrix <- function(x = matrix()) 
 {
       invers <- NULL   
-      newmat <- TRUE   #TRUE if the matrix has changed
+      newmat <- TRUE   #TRUE for new matrix
       
       set <- function(mat = matrix())   #store a new matrix and initializes variables
       {     
@@ -17,7 +17,7 @@ makeCacheMatrix <- function(x = matrix())
             newmat <<- TRUE   
       }
       
-      get         <-function()            {x}   #
+      get         <-function()            {x}   
       getNewMat   <-function()            {newmat}   
       setNewMat   <-function(ch)          {newmat<<-ch}
       setInverse  <-function(inv)         {invers <<- inv}
@@ -49,7 +49,7 @@ cacheSolve <- function(x, ...)
             message("getting cached data")
             return(invers)   #if so return cache value
       }
-      #If not previously calculated, calculate inverse
+      #If not previously calculated, calculate inverse and cache new inverse
       data <- x$get()
       invers <- solve(data, ...)
       x$setInverse(invers)
